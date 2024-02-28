@@ -1,54 +1,53 @@
-![Please-enter-a-title_-001](https://user-images.githubusercontent.com/87453411/228857059-6f2f4c79-bacf-43e0-b6da-6bb58c26abd1.png)
+![jamgun-v2](https://github.com/thursdaycurry/jamgun-v2/assets/87453411/ee9b6698-65b8-4fc5-87d4-4421a87c409e)
 
-# Project JAMGUN(Job Application Machine Gun)
+# JAMGUN-v2
 
-- What : Sellenium-based job applying program
-- What is that character : the character symbolize artillery soldier squirrel
-- Why : To collect job posting statistic data(+and automate job application)
-- Target : job platform([Jumpit](https://www.jumpit.co.kr/), [Intellipick](https://intellipick.spartacodingclub.kr/)) in South Korea
+Project title : JAMGUN(Job-application Automation Machine Gun)
 
-## News
+JAMGUN-v2은 puppeteer 기반 입사지원(Job-application) 자동화 프로그램입니다.
 
-- 2023-03-29 : basic scraping func success
-- 2023-03-30 : target site added(JUMPIT).
+background
 
-## Troubleshooting
+- 기존 JAMGUN-v1은 파이썬 기반 Selenium으로 개발되었으나, 해당 라이브러리가 가진 explicitWait 함수의 복잡한 적용 방식 등 불편한 개발 경험을 고려하여 Puppeteer로 이전되었다.
 
-- scraping only limited number(60) of data not everything(2023-03-30) -> solved by changing while loop condition
-- final df shows nothing(2023-03-30) -> fixed with removing duplicated initiating codes
+Target platform
 
-## Who need this?
+- South Korea : [Jumpit](https://www.jumpit.co.kr/)
 
-- Job seekers who want to automate applying job
-- Researcher who want to get job post statistics in the job platform
-
-## What can I do
+## Function
 
 - You can automate job application tasks(2023-03-30, Intellipick, Jumpit)
 - You can get summary about jobs you applied in CSV file at `/data` directory.
 
-![Screenshot 2023-04-01 at 4 30 05 AM](https://user-images.githubusercontent.com/87453411/229212130-151fb54c-2ff8-480a-b936-ed6155032936.jpg)
-
-## Check this out before using
-
-### robots.txt
-
-check '<target-website>/robots.txt' if scraping target page is allowed.
-
-### set environment file
-
-create `.env` file in root directory and put your id, pw like below.
+## environments
 
 ```
-SPARTA_ID=<your-email>
-SPARTA_PASSWORD=<your-password>
-JUMPIT_ID=<your-email>
+node : v21.6.1
+dotenv : 16.4.5
+puppeteer : 22.3.0
+```
+
+.env
+
+```
+JUMPIT_EMAIL=<your-email>
 JUMPIT_PASSWORD=<your-password>
+JUMPIT_TARGET_URL=<target-url>
+
 SLACK_WEBHOOK_URL=<your-slack-url>
 ```
 
-### get proper driver
+## Architecture
 
-If driver-related problem occurs, make sure to use proper chromedriver. In this root directory, you will find chromedriver for mac arm64.
+Jamgun v1 Architecture
+![Screenshot 2023-04-01 at 4 30 05 AM](https://user-images.githubusercontent.com/87453411/229212130-151fb54c-2ff8-480a-b936-ed6155032936.jpg)
 
-Check driver that fits your browser's version(https://chromedriver.chromium.org/)
+## Logo
+
+Logo created by Leonardo.AI
+
+Prompt
+
+```
+You are a professional cartoon illustrator. I will give you a description of the picture and you will draw it. The character description is a cute chubby, fluffy squirrel character wearing a small hat and holding a telescope, facing right. The colours are black and white, and the drawing is done in a classic American style, clean and uncluttered, but with a hand-drawn look. The squirrel character is cute, but has big, sparkling eyes. I want you to draw his pupils big and add sparkles to his eyes to give him a sense of madness. The squirrel is facing to the right.
+```
