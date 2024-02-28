@@ -1,5 +1,6 @@
 .env
 
 # github 업로드 용량 제한으로 인한 puppeteer 캐시 폴더 제외
-.cache/puppeteer 
+.cache/puppeteer
+.log
 
