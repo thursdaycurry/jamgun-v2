@@ -2,13 +2,13 @@
 
 # JAMGUN-v2
 
-Project title : JAMGUN(Job-application Automation Machine Gun)
+## Overview
 
-JAMGUN-v2은 puppeteer 기반 입사지원(Job-application) 자동화 프로그램입니다.
+JAMGUN(Job-application Automation Machine Gun)은 입사 지원(Job-application) 자동화 프로그램입니다.
 
-background
+JAMGUN-v2은 puppeteer 기반으로 개발되었습니다.
 
-- 기존 JAMGUN-v1은 파이썬 기반 Selenium으로 개발되었으나, 해당 라이브러리가 가진 explicitWait 함수의 복잡한 적용 방식 등 불편한 개발 경험을 고려하여 Puppeteer로 이전되었다.
+기존 JAMGUN-v1은 파이썬 기반 Selenium으로 개발되었으나, 해당 라이브러리가 가진 explicitWait 함수의 복잡한 적용 방식 등 불편한 개발 경험을 고려하여 Puppeteer로 이전되었다.
 
 Target platform
 
@@ -16,10 +16,12 @@ Target platform
 
 ## Function
 
-- You can automate job application tasks(2023-03-30, Intellipick, Jumpit)
-- You can get summary about jobs you applied in CSV file at `/data` directory.
+<!-- - You can automate job application tasks(2023-03-30, Intellipick, Jumpit) -->
+<!-- - You can get summary about jobs you applied in CSV file at `/data` directory. -->
 
 ## environments
+
+version
 
 ```
 node : v21.6.1
@@ -34,7 +36,7 @@ JUMPIT_EMAIL=<your-email>
 JUMPIT_PASSWORD=<your-password>
 JUMPIT_TARGET_URL=<target-url>
 
-SLACK_WEBHOOK_URL=<your-slack-url>
+<!-- SLACK_WEBHOOK_URL=<your-slack-url> -->
 ```
 
 ## Architecture
@@ -48,6 +50,4 @@ Logo created by Leonardo.AI
 
 Prompt
 
-```
-You are a professional cartoon illustrator. I will give you a description of the picture and you will draw it. The character description is a cute chubby, fluffy squirrel character wearing a small hat and holding a telescope, facing right. The colours are black and white, and the drawing is done in a classic American style, clean and uncluttered, but with a hand-drawn look. The squirrel character is cute, but has big, sparkling eyes. I want you to draw his pupils big and add sparkles to his eyes to give him a sense of madness. The squirrel is facing to the right.
-```
+> You are a professional cartoon illustrator. I will give you a description of the picture and you will draw it. The character description is a cute chubby, fluffy squirrel character wearing a small hat and holding a telescope, facing right. The colours are black and white, and the drawing is done in a classic American style, clean and uncluttered, but with a hand-drawn look. The squirrel character is cute, but has big, sparkling eyes. I want you to draw his pupils big and add sparkles to his eyes to give him a sense of madness. The squirrel is facing to the right.

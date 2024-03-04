@@ -45,12 +45,16 @@ async function autoScroll(page, scrollCount) {
   await page.goto(process.env.JUMPIT_TARGET_URL);
   await delay(2000, `웹페이지 도착`);
 
-  const btn_first_popup = await page.waitForSelector(
-    'button ::-p-text(오늘은 이대로 볼래요)',
-    { visible: true }
-  );
-  await delay(2000, `첫 팝업 -> 메인화면`);
-  await btn_first_popup.click();
+  try {
+    const btn_first_popup = await page.waitForSelector(
+      'button ::-p-text(오늘은 이대로 볼래요)',
+      { visible: true }
+    );
+    await delay(2000, `첫 팝업 -> 메인화면`);
+    await btn_first_popup.click();
+  } catch (error) {
+    console.log('첫 팝업 버튼이 없네요');
+  }
 
   const btn_login = await page.waitForSelector(
     'button ::-p-text(회원가입/로그인)'
@@ -70,6 +74,9 @@ async function autoScroll(page, scrollCount) {
 
   console.log(`🟫 로그인 성공================`);
 
+  await delay(2000, `대기`);
+  await page.goto(process.env.JUMPIT_TARGET_URL2);
+  await delay(2000, `대기`);
   const btn_order_recent = await page.waitForSelector(
     'button ::-p-text(최신순)',
     { visible: true }
@@ -84,11 +91,11 @@ async function autoScroll(page, scrollCount) {
   // await page.on('console', (msg) => console.log('🟩 LOG:', msg.text()));
 
   // 10개 기준 약 50개 게시물 확인 가능
-  await autoScroll(page, 1);
+  await autoScroll(page, 10);
 
   const jobArticles = await page.evaluate(() =>
     Array.from(
-      document.querySelectorAll('body > main > div > div > section > div'),
+      document.querySelectorAll('body > main > div > section > section > div'),
       (element) => {
         const anchor = element.querySelector('a');
         const img = element.querySelector('img');
@@ -118,15 +125,7 @@ async function autoScroll(page, scrollCount) {
 
   const records = [];
 
-  let temp_count = 0;
-
   for await (const job of filteredJobArticles) {
-    if (temp_count > 1) {
-      break;
-    }
-
-    temp_count++;
-
     console.log(job.href);
     page.goto(job.href);
     await delay(3000, `페이지 이동`);
@@ -182,5 +181,5 @@ async function autoScroll(page, scrollCount) {
     }건 패스`
   );
 
-  // await browser.close();
+  await browser.close();
 })();
